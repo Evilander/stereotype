@@ -150,6 +150,7 @@ def audit(
         raise ValueError(f"batteries {wrong} do not apply to a {fam} subject")
     results: dict[str, dict] = {}
     null_results: dict[str, dict] = {}
+    reused: list[str] = []
     cfg_all = battery_cfg or {}
     for bid in chosen:
         cls = BATTERIES[bid]
@@ -157,6 +158,7 @@ def audit(
         summary_path = out / f"{bid}.summary.json"
         if resume and summary_path.exists():
             results[bid] = json.loads(summary_path.read_text(encoding="utf-8"))
+            reused.append(bid)
             log(f"[{bid}] reused {summary_path.name}")
         else:
             log(f"[{bid}] running on {model_id} …")
@@ -190,6 +192,7 @@ def audit(
         "seed": seed,
         "n": n,
         "batteries": chosen,
+        "reused_from_earlier_run": reused,
         "nulls": nulls,
         "command": " ".join(shlex.quote(a) for a in sys.argv),
         "python": sys.version.split()[0],

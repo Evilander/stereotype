@@ -156,7 +156,16 @@ def highlights(battery: str, s: dict) -> list[Row]:
                     0.0,
                     1.5,
                     "logit",
-                    _with_mde("positive favours the first group", v.get("mde"), "logit"),
+                    _with_mde(
+                        "positive favours the first group"
+                        + (
+                            f"; token-matched {_f(v['token_matched_logit_diff'])}"
+                            if v.get("token_matched_logit_diff") is not None
+                            else ""
+                        ),
+                        v.get("mde"),
+                        "logit",
+                    ),
                 )
             )
         for g, r in s.get("impact_ratio", {}).items():
@@ -560,7 +569,9 @@ _CSS = """
 :root{--bg:#f7f5f0;--fg:#1b1a17;--muted:#6b675e;--line:#d9d4c7;--pos:#a8321f;--neg:#1f5fa8;--ci:#8a8578}
 @media (prefers-color-scheme: dark){:root{--bg:#171613;--fg:#ece8df;--muted:#a39d8f;--line:#3b3831;--pos:#e2664f;--neg:#5c9be0;--ci:#8a8578}}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Georgia,'Times New Roman',serif}
-main{max-width:1040px;margin:0 auto;padding:32px 20px 64px}
+main{max-width:1280px;margin:0 auto;padding:32px 20px 64px}
+.scroll{overflow-x:auto;max-width:100%}
+td:last-child{min-width:220px;font-size:13px;color:var(--muted)}
 h1{font-size:28px;margin:0 0 6px}h2{font-size:20px;margin:36px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
 .meta{color:var(--muted);font-size:13px}code{font:13px ui-monospace,Menlo,Consolas,monospace}
 table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
@@ -604,7 +615,13 @@ def render_html(card: dict) -> str:
     subj = card["subject"]
     run = card["run"]
     e = html.escape
-    out = [f"<title>{e(subj['model_id'])} stereotype card</title>", f"<style>{_CSS}</style>", "<main>"]
+    out = [
+        '<meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        f"<title>{e(subj['model_id'])} stereotype card</title>",
+        f"<style>{_CSS}</style>",
+        "<main>",
+    ]
     out.append(f"<h1>Stereotype Card</h1><div><code>{e(subj['model_id'])}</code></div>")
     rev = subj.get("resolved_revision") or subj.get("revision") or "unrecorded"
     out.append(
@@ -628,7 +645,7 @@ def render_html(card: dict) -> str:
         rows = highlights(bid, s)
         if rows:
             out.append(
-                "<table><thead><tr><th>measure</th><th>balance</th><th>estimate</th><th>95 % CI</th><th>n</th><th>p</th><th>p (Holm)</th><th>note</th></tr></thead><tbody>"
+                "<div class='scroll'><table><thead><tr><th>measure</th><th>balance</th><th>estimate</th><th>95 % CI</th><th>n</th><th>p</th><th>p (Holm)</th><th>note</th></tr></thead><tbody>"
             )
             for r in rows:
                 out.append(
@@ -637,7 +654,7 @@ def render_html(card: dict) -> str:
                     f"<td class='num'>{_f(r.p, 4) if r.p is not None else ''}</td>"
                     f"<td class='num'>{_f(r.p_adj, 4) if r.p_adj is not None else ''}</td><td>{e(r.note)}</td></tr>"
                 )
-            out.append("</tbody></table>")
+            out.append("</tbody></table></div>")
         if res.get("notes"):
             out.append("<ul>" + "".join(f"<li>{e(n)}</li>" for n in res["notes"]) + "</ul>")
         if bid in card.get("nulls", {}):
