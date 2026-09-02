@@ -8,6 +8,7 @@ import pandas as pd
 from stereotype_audit import stats
 from stereotype_audit.batteries.base import Battery, BatteryResult, preview
 from stereotype_audit.data import (
+    BBQ_PARQUET_REVISION,
     BBQ_REVISION,
     LICENSES,
     bbq_is_biased_answer,
@@ -64,6 +65,7 @@ class BBQBattery(Battery):
         summary = {
             "license": LICENSES["bbq"],
             "dataset_revision": BBQ_REVISION,
+            "dataset_parquet_revision": BBQ_PARQUET_REVISION,
             "per_category_sample": per_cat,
             "unscorable_items": {cat: int((~g["scorable"]).sum()) for cat, g in df.groupby("category")},
             "answer_mass_mean": float(df["answer_mass"].mean()),

@@ -15,13 +15,14 @@ import pandas as pd
 DISCRIM_EVAL_ID = "Anthropic/discrim-eval"
 DISCRIM_EVAL_REVISION = "6986d6ea802e019d01e94dd59597e94fbd8f8c4a"
 BBQ_ID = "heegyu/bbq"
-BBQ_REVISION = "5d6faae52070aa5eb71b46d1c0723d3ba7930209"
+BBQ_REVISION = "5d6faae52070aa5eb71b46d1c0723d3ba7930209"  # data commit on the main branch
+BBQ_PARQUET_REVISION = "da21e4bdbe74d6bed714ee80b4941c9c73958aea"  # Hub Parquet export of that data
 CROWS_URL = "https://raw.githubusercontent.com/nyu-mll/crows-pairs/master/data/crows_pairs_anonymized.csv"
 CROWS_SHA256 = "dfb36986ce0502abbaf7055b9176da3d08d48e07df1251991b5dfbcbceab9d0c"
 
 DATASET_REVISIONS = {
     "discrim_eval": {"id": DISCRIM_EVAL_ID, "revision": DISCRIM_EVAL_REVISION},
-    "bbq": {"id": BBQ_ID, "revision": BBQ_REVISION},
+    "bbq": {"id": BBQ_ID, "revision": BBQ_REVISION, "parquet_revision": BBQ_PARQUET_REVISION},
     "crows_pairs": {"url": CROWS_URL, "sha256": CROWS_SHA256},
 }
 
@@ -55,12 +56,22 @@ def cache_dir() -> Path:
     return path
 
 
-def load_discrim_eval(config: str = "explicit") -> pd.DataFrame:
-    """Columns: filled_template, decision_question_id, age, gender, race, fill_type."""
-    from datasets import load_dataset
+def _hub_file(repo_id: str, filename: str, revision: str) -> str:
+    """Download (or find in the cache) one file from a Hub dataset at a pinned revision."""
+    from huggingface_hub import hf_hub_download
 
-    ds = load_dataset(DISCRIM_EVAL_ID, config, split="train", revision=DISCRIM_EVAL_REVISION)
-    df = ds.to_pandas()
+    return hf_hub_download(repo_id, filename, repo_type="dataset", revision=revision)
+
+
+def load_discrim_eval(config: str = "explicit") -> pd.DataFrame:
+    """Columns: filled_template, decision_question_id, age, gender, race, fill_type.
+
+    Read straight from the repository's JSONL at the pinned revision; no dataset script is involved.
+    """
+    if config not in ("explicit", "implicit"):
+        raise ValueError("config must be 'explicit' or 'implicit'")
+    path = _hub_file(DISCRIM_EVAL_ID, f"{config}.jsonl", DISCRIM_EVAL_REVISION)
+    df = pd.read_json(path, lines=True)
     df["age"] = df["age"].astype(float)
     return df
 
@@ -74,13 +85,15 @@ def discrim_eval_baseline(df: pd.DataFrame) -> pd.DataFrame:
 def load_bbq(
     categories: list[str] | None = None, per_category: int | None = None, seed: int = 0
 ) -> pd.DataFrame:
-    """BBQ rows with a `category` column; optionally a stratified sample balanced over context condition and polarity."""
-    from datasets import load_dataset
+    """BBQ rows with a `category` column; optionally a stratified sample balanced over context condition and polarity.
 
+    The mirror ships a loading script, which current tooling refuses, so rows come from the Hub's
+    Parquet export of the same data at a pinned commit of that export branch.
+    """
     frames = []
     for cat in categories or BBQ_CATEGORIES:
-        ds = load_dataset(BBQ_ID, cat, split="test", revision=BBQ_REVISION)
-        df = ds.to_pandas()
+        path = _hub_file(BBQ_ID, f"{cat}/test/0000.parquet", BBQ_PARQUET_REVISION)
+        df = pd.read_parquet(path)
         df["category"] = cat
         if per_category is not None and len(df) > per_category:
             df = _stratified_sample(df, ["context_condition", "question_polarity"], per_category, seed)
