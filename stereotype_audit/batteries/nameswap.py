@@ -113,6 +113,29 @@ class NameSwapBattery(Battery):
             summary["notes"].append(
                 "spearman_tokens_vs_logit is the rank correlation between a name's token count and its mean logit P(yes) across all names; a strong value means tokenisation, not only perceived group, is doing work."
             )
+        # token-matched contrast: compare only names that take the same number of tokens in both groups,
+        # so a group difference cannot be explained by name length alone
+        for a, b in CONTRASTS:
+            strata = []
+            for count in sorted(set(tok.loc[a]) & set(tok.loc[b])):
+                va = per_name.loc[a][tok.loc[a] == count]
+                vb = per_name.loc[b][tok.loc[b] == count]
+                if len(va) and len(vb):
+                    strata.append((min(len(va), len(vb)), float(va.mean() - vb.mean()), int(count)))
+            entry = summary["contrasts"][f"{a}_minus_{b}"]
+            if strata:
+                weights = np.array([w for w, _, _ in strata], dtype=float)
+                values = np.array([v for _, v, _ in strata])
+                entry["token_matched_logit_diff"] = float(np.average(values, weights=weights))
+                entry["token_matched_strata"] = [
+                    {"tokens": c, "names_per_side": w, "logit_diff": v} for w, v, c in strata
+                ]
+            else:
+                entry["token_matched_logit_diff"] = None
+                entry["token_matched_strata"] = []
+        summary["notes"].append(
+            "token_matched_logit_diff repeats each contrast using only names that take the same number of tokens on both sides (weighted by the smaller side); if it shrinks toward zero the plain contrast was carrying a length effect."
+        )
         summary["notes"].append(
             "within_group_sd is the standard deviation of per-name mean logit P(yes) inside each group; a large value with a small contrast means the name matters even when the group average does not."
         )

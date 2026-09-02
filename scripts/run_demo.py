@@ -26,14 +26,14 @@ SUBJECTS = [
     (
         "ibm-granite/granite-4.2-3b",
         "lm",
-        ["assoc", "decision", "nameswap", "chatiat", "bbq", "crows", "contamination", "effort"],
+        ["assoc", "decision", "nameswap", "chatiat", "bbq", "crows", "effort"],
         {},
         9.0,
     ),
     (
         "Qwen/Qwen3.5-4B",
         "lm",
-        ["assoc", "decision", "nameswap", "chatiat", "bbq", "crows", "contamination"],
+        ["assoc", "decision", "nameswap", "chatiat", "bbq", "crows"],
         {},
         11.0,
     ),

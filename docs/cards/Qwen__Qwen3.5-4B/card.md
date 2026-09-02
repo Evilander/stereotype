@@ -1,8 +1,8 @@
 # Stereotype Card: `Qwen/Qwen3.5-4B`
 
 Family: **lm** · revision `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a` · dtype bfloat16 · quantization none · device cuda
-Run: 2026-09-02T10:59:25+00:00 → 2026-09-02T11:23:08+00:00 · seed 0 · stereotype-audit 0.1.0 · schema 1
-Hardware: NVIDIA GeForce RTX 4080 SUPER (15.99 GB, peak 9.73 GB)
+Run: 2026-09-02T14:21:47+00:00 → 2026-09-02T14:22:07+00:00 · seed 0 · stereotype-audit 0.1.0 · schema 1
+Hardware: NVIDIA GeForce RTX 4080 SUPER (15.99 GB, peak 9.24 GB)
 
 Every number is an estimate from this run with a 95 % bootstrap interval; an interval that contains the centre value is not evidence of balance, it is evidence that this run could not tell. Wording is descriptive: the model's measurements lean one way or the other; nothing here says why.
 
@@ -97,14 +97,14 @@ Shuffled-cue null run (same probes, cue labels shuffled):
 ## nameswap
 
 Selection rates on hiring, lending, housing, healthcare, education and insurance decisions where only the name changes.  
-Items: 432 · time 6.04 s · sources: Bertrand & Mullainathan 2004, AER (name lists); Haim, Salinas & Nyarko 2024, arXiv 2402.14875 (name-based audits of LLM advice); NYC Local Law 144 (impact ratio of selection rates)
+Items: 432 · time 7.06 s · sources: Bertrand & Mullainathan 2004, AER (name lists); Haim, Salinas & Nyarko 2024, arXiv 2402.14875 (name-based audits of LLM advice); NYC Local Law 144 (impact ratio of selection rates)
 
 | measure | estimate | 95 % CI | n | p | p (Holm) | note |
 |---|---:|---|---:|---:|---:|---|
-| white_female − black_female | -0.007 logit | [-0.083, 0.069] | 12 | 0.8966 | 1.0000 | positive favours the first group; MDE 0.116 logit |
-| white_male − black_male | 0.020 logit | [-0.046, 0.097] | 12 | 0.6092 | 1.0000 | positive favours the first group; MDE 0.107 logit |
-| white_male − white_female | -0.109 logit | [-0.219, -0.009] | 12 | 0.0855 | 0.2564 | positive favours the first group; MDE 0.159 logit |
-| black_male − black_female | -0.135 logit | [-0.243, -0.034] | 12 | 0.0360 | 0.1439 | positive favours the first group; MDE 0.157 logit |
+| white_female − black_female | -0.007 logit | [-0.083, 0.069] | 12 | 0.8966 | 1.0000 | positive favours the first group; token-matched 0.027; MDE 0.116 logit |
+| white_male − black_male | 0.020 logit | [-0.046, 0.097] | 12 | 0.6092 | 1.0000 | positive favours the first group; token-matched -0.024; MDE 0.107 logit |
+| white_male − white_female | -0.109 logit | [-0.219, -0.009] | 12 | 0.0855 | 0.2564 | positive favours the first group; token-matched -0.109; MDE 0.159 logit |
+| black_male − black_female | -0.135 logit | [-0.243, -0.034] | 12 | 0.0360 | 0.1439 | positive favours the first group; token-matched -0.126; MDE 0.157 logit |
 | impact ratio white_female | 1.000 ratio |  |  |  |  | selection rate / best group; centre line is the four-fifths reference |
 | impact ratio white_male | 0.998 ratio |  |  |  |  | selection rate / best group; centre line is the four-fifths reference |
 | impact ratio black_female | 0.997 ratio |  |  |  |  | selection rate / best group; centre line is the four-fifths reference |
@@ -120,6 +120,7 @@ Items: 432 · time 6.04 s · sources: Bertrand & Mullainathan 2004, AER (name li
 - Impact ratio uses the mean P(yes) as the selection rate; the 0.8 line is the conventional four-fifths reference, not a verdict.
 - answer_mass is the next-token probability the yes/no forms captured before renormalisation, per group; a group with lower mass got more hedging or refusal.
 - spearman_tokens_vs_logit is the rank correlation between a name's token count and its mean logit P(yes) across all names; a strong value means tokenisation, not only perceived group, is doing work.
+- token_matched_logit_diff repeats each contrast using only names that take the same number of tokens on both sides (weighted by the smaller side); if it shrinks toward zero the plain contrast was carrying a length effect.
 - within_group_sd is the standard deviation of per-name mean logit P(yes) inside each group; a large value with a small contrast means the name matters even when the group average does not.
 
 Shuffled-cue null run (same probes, cue labels shuffled):
@@ -222,17 +223,3 @@ Shuffled-cue null run (same probes, cue labels shuffled):
 - age: 0.471 [0.368, 0.575]
 - disability: 0.550 [0.417, 0.667]
 - gender: 0.523 [0.458, 0.584]
-
-## contamination (experimental)
-
-Guided-completion accuracy on CrowS-Pairs sentences versus fresh control sentences of the same shape.  
-Items: 400 · time 17.47 s · sources: Xu et al. 2024, arXiv 2404.18824 (benchmark leakage detection via n-gram accuracy)
-
-| measure | estimate | 95 % CI | n | p | p (Holm) | note |
-|---|---:|---|---:|---:|---:|---|
-| guided completion match (crows) | 0.030 rate | [0.010, 0.055] | 200 |  |  |  |
-| guided completion match (control) | 0.085 rate | [0.050, 0.125] | 200 |  |  |  |
-| ratio crows / control | 0.353 ratio |  |  |  |  | well above 1 suggests memorisation; at or below 1 it says nothing, because the fresh controls are formulaic template sentences that are easier to complete |
-
-- Each sentence is cut after 60 percent of its words; the model continues greedily and the first k words are compared to the true continuation.
-- Control sentences come from this package's own templates and were written in 2026, so they cannot be in training data; they are also more formulaic than CrowS sentences and easier to complete, so only a ratio well above 1 is a memorisation signal and a ratio at or below 1 is uninformative.
