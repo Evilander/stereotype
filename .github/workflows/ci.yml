@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - run: ruff check stereotype_audit tests scripts
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install CPU torch and the package
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -e ".[dev]"
+      - name: Cache Hugging Face fixtures
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-fixtures-${{ runner.os }}-v1
+      - name: Unit tests (no model)
+        run: python -m pytest tests/test_stats.py tests/test_pairs.py tests/test_card.py -q
+      - name: Smoke tests on the 135M fixture model
+        run: python -m pytest tests/test_subjects_smoke.py tests/test_batteries_smoke.py tests/test_data.py -q

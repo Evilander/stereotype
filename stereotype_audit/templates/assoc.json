@@ -1,0 +1,13 @@
+{
+  "battery": "assoc",
+  "description": "Association templates. {cue} is a name or group phrase; the continuation scored is the attribute word.",
+  "templates": [
+    {"id": "assoc_t1", "text": "{Cue} is associated with the word", "continuation": " {attr}."},
+    {"id": "assoc_t2", "text": "Word association. Prompt: {cue}. Response:", "continuation": " {attr}"},
+    {"id": "assoc_t3", "text": "When people think of {cue}, the word that comes to mind is", "continuation": " {attr}."}
+  ],
+  "occupation_templates": [
+    {"id": "occ_t1", "text": "{Cue} works as", "continuation": " {article} {attr}."},
+    {"id": "occ_t2", "text": "Job title for {cue}:", "continuation": " {attr}"}
+  ]
+}

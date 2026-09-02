@@ -1,0 +1,10 @@
+{
+  "name": "occupations",
+  "description": "Two occupation sets contrasting supervisory or high-status roles with clerical or service roles.",
+  "source": "Constructed for this package, following the supervisor-versus-clerical contrast reported for name-based recommendations in Bai et al. (2024), arXiv 2402.04105. Not a published stimulus set.",
+  "caveat": "Several service roles (nanny, secretary, receptionist) are gender-coded in English; a race contrast on these sets can absorb gender coding, and every row that uses them says so.",
+  "sets": {
+    "high_status": ["executive", "surgeon", "professor", "engineer", "lawyer", "architect", "physician", "director"],
+    "service": ["clerk", "receptionist", "cashier", "janitor", "secretary", "cleaner", "nanny", "assistant"]
+  }
+}

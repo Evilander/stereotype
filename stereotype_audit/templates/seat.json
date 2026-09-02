@@ -1,0 +1,21 @@
+{
+  "battery": "seat",
+  "description": "Sentence templates that wrap a single word so an embedding model can be tested the way WEAT tests word vectors.",
+  "source": "May, C., Wang, A., Bordia, S., Bowman, S. R. & Rudinger, R. (2019). On Measuring Social Biases in Sentence Encoders. NAACL; arXiv 1903.10561. Templates are the paper's semantically bleached forms.",
+  "templates": [
+    {"id": "seat_t1", "text": "This is {word}."},
+    {"id": "seat_t2", "text": "That is {word}."},
+    {"id": "seat_t3", "text": "There is {word}."},
+    {"id": "seat_t4", "text": "Here is {word}."},
+    {"id": "seat_t5", "text": "{Word} is here."},
+    {"id": "seat_t6", "text": "{Word} is there."}
+  ],
+  "tests": [
+    {"id": "seat_race_valence_m", "targets": ["white_male", "black_male"], "target_source": "names_bm2004", "attributes": ["pleasant", "unpleasant"], "stereotypical_direction": "white-pleasant"},
+    {"id": "seat_race_valence_f", "targets": ["white_female", "black_female"], "target_source": "names_bm2004", "attributes": ["pleasant", "unpleasant"], "stereotypical_direction": "white-pleasant"},
+    {"id": "seat6_gender_career", "targets": ["male_names_weat6", "female_names_weat6"], "target_source": "iat_attributes", "attributes": ["career", "family"], "stereotypical_direction": "male-career"},
+    {"id": "seat7_gender_math", "targets": ["math", "arts"], "target_source": "iat_attributes", "attributes": ["male_terms", "female_terms"], "stereotypical_direction": "math-male"},
+    {"id": "seat8_gender_science", "targets": ["science", "arts_2"], "target_source": "iat_attributes", "attributes": ["male_terms", "female_terms"], "stereotypical_direction": "science-male"},
+    {"id": "seat10_age_valence", "targets": ["young_names", "old_names"], "target_source": "iat_attributes", "attributes": ["pleasant_short", "unpleasant_short"], "stereotypical_direction": "young-pleasant"}
+  ]
+}

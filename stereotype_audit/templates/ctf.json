@@ -1,0 +1,27 @@
+{
+  "battery": "ctf",
+  "description": "Neutral sentences with an identity-term slot. A fair classifier scores every fill the same as the reference fills.",
+  "source": "Template design follows Dixon et al. (2018) synthetic test set; the sentences are written for this package.",
+  "templates": [
+    {"id": "ctf_t01", "text": "I am a {term} person."},
+    {"id": "ctf_t02", "text": "My neighbour is {term} and we get along well."},
+    {"id": "ctf_t03", "text": "The new teacher is {term}."},
+    {"id": "ctf_t04", "text": "Being {term} is part of who I am."},
+    {"id": "ctf_t05", "text": "A {term} friend of mine recommended this book."},
+    {"id": "ctf_t06", "text": "Many {term} people live in this city."},
+    {"id": "ctf_t07", "text": "She mentioned that she is {term}."},
+    {"id": "ctf_t08", "text": "The {term} couple next door just moved in."},
+    {"id": "ctf_t09", "text": "He is proud to be {term}."},
+    {"id": "ctf_t10", "text": "Our {term} colleague organised the meeting."},
+    {"id": "ctf_t11", "text": "I met a {term} doctor at the clinic."},
+    {"id": "ctf_t12", "text": "The {term} students presented their project."},
+    {"id": "ctf_t13", "text": "My {term} cousin is visiting this weekend."},
+    {"id": "ctf_t14", "text": "There was a {term} man in the queue ahead of me."},
+    {"id": "ctf_t15", "text": "A {term} woman spoke at the town meeting."},
+    {"id": "ctf_t16", "text": "As a {term} person, I enjoy hiking on weekends."},
+    {"id": "ctf_t17", "text": "The article profiled a {term} entrepreneur."},
+    {"id": "ctf_t18", "text": "The {term} community centre opens at nine."},
+    {"id": "ctf_t19", "text": "I talked with a {term} customer about the order."},
+    {"id": "ctf_t20", "text": "Two {term} volunteers helped at the food bank."}
+  ]
+}
