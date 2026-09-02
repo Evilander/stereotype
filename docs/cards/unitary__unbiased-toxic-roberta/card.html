@@ -1,0 +1,616 @@
+<title>unitary/unbiased-toxic-roberta stereotype card</title>
+<style>
+:root{--bg:#f7f5f0;--fg:#1b1a17;--muted:#6b675e;--line:#d9d4c7;--pos:#a8321f;--neg:#1f5fa8;--ci:#8a8578}
+@media (prefers-color-scheme: dark){:root{--bg:#171613;--fg:#ece8df;--muted:#a39d8f;--line:#3b3831;--pos:#e2664f;--neg:#5c9be0;--ci:#8a8578}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 Georgia,'Times New Roman',serif}
+main{max-width:1040px;margin:0 auto;padding:32px 20px 64px}
+h1{font-size:28px;margin:0 0 6px}h2{font-size:20px;margin:36px 0 6px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.meta{color:var(--muted);font-size:13px}code{font:13px ui-monospace,Menlo,Consolas,monospace}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+svg{display:block}details{margin-top:8px}summary{cursor:pointer;color:var(--muted)}
+pre{white-space:pre-wrap;font:12px ui-monospace,Menlo,Consolas,monospace;background:transparent;border:1px solid var(--line);padding:8px;overflow-x:auto}
+.warn{border-left:3px solid var(--pos);padding-left:10px;color:var(--muted)}
+</style>
+<main>
+<h1>Stereotype Card</h1><div><code>unitary/unbiased-toxic-roberta</code></div>
+<p class='meta'>family clf · revision <code>36295dd80b422dc49f40052021430dae76241adc</code> · dtype float32 · quantization none · device cuda · run 2026-09-02T11:23:24+00:00 → 2026-09-02T11:23:26+00:00 · seed 0 · stereotype-audit 0.1.0</p>
+<p class='meta'>NVIDIA GeForce RTX 4080 SUPER, 15.99 GB, peak 9.73 GB</p>
+<p class='warn'>Every number is an estimate from this run with a 95 % bootstrap interval. An interval that contains the centre line is not evidence of balance; it means this run could not tell. The wording is descriptive: the model's measurements lean one way or the other, and nothing here says why.</p>
+<h2>ctf</h2>
+<p>Score gaps between identity terms and neutral reference terms in the same sentences; false-positive flip rates.</p><p class='meta'>items 940 · 0.43 s · Dixon et al. 2018, AIES (unintended bias, identity terms); Garg et al. 2019, AIES (counterfactual token fairness)</p>
+<table><thead><tr><th>measure</th><th>balance</th><th>estimate</th><th>95 % CI</th><th>n</th><th>p</th><th>p (Holm)</th><th>note</th></tr></thead><tbody>
+<tr><td>age: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="age: score gap vs reference -0.009"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="106.53817482865458" y1="11.0" x2="109.794606935418" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="108.11323676557762" cy="11.0" r="5" fill="var(--neg)"/></svg></td><td class='num'>-0.009 prob</td><td class='num'>[-0.017, -0.001]</td><td class='num'>7</td><td class='num'></td><td class='num'></td><td>flag rate 0.00, worst term old</td></tr>
+<tr><td>disability: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="disability: score gap vs reference 0.052"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="112.43413306722167" y1="11.0" x2="132.20262396339" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="120.79349582598272" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.052 prob</td><td class='num'>[0.012, 0.107]</td><td class='num'>3</td><td class='num'></td><td class='num'></td><td>underpowered (n=3); flag rate 0.03, worst term deaf</td></tr>
+<tr><td>gender: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="gender: score gap vs reference 0.047"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="116.89976579394701" y1="11.0" x2="123.51976548967257" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="119.87104272950091" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.047 prob</td><td class='num'>[0.033, 0.065]</td><td class='num'>4</td><td class='num'></td><td class='num'></td><td>flag rate 0.01, worst term transgender</td></tr>
+<tr><td>race_ethnicity: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="race_ethnicity: score gap vs reference 0.033"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="114.47333376470228" y1="11.0" x2="120.06244389330809" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="116.94417504912747" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.033 prob</td><td class='num'>[0.022, 0.048]</td><td class='num'>15</td><td class='num'></td><td class='num'></td><td>flag rate 0.01, worst term black</td></tr>
+<tr><td>religion: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="religion: score gap vs reference 0.024"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="112.20765639674997" y1="11.0" x2="118.11257830862955" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="114.88935199894559" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.024 prob</td><td class='num'>[0.011, 0.039]</td><td class='num'>7</td><td class='num'></td><td class='num'></td><td>flag rate 0.01, worst term buddhist</td></tr>
+<tr><td>sexual_orientation: score gap vs reference</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="sexual_orientation: score gap vs reference 0.157"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="134.2666894595246" y1="11.0" x2="152.501595970776" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="142.60004487299508" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.157 prob</td><td class='num'>[0.117, 0.204]</td><td class='num'>7</td><td class='num'></td><td class='num'></td><td>flag rate 0.04, worst term gay</td></tr>
+<tr><td>reference terms: mean score spread</td><td><svg width="220" height="22" viewBox="0 0 220 22" role="img" aria-label="reference terms: mean score spread 0.014"><line x1="6" y1="11.0" x2="214" y2="11.0" stroke="var(--line)" stroke-width="1"/><line x1="110.0" y1="3" x2="110.0" y2="19" stroke="var(--muted)" stroke-width="1"/><line x1="110.19716120625381" y1="11.0" x2="115.63703869166784" y2="11.0" stroke="var(--ci)" stroke-width="4" stroke-linecap="round" opacity="0.8"/><circle cx="112.91709994896082" cy="11.0" r="5" fill="var(--pos)"/></svg></td><td class='num'>0.014 prob</td><td class='num'>[0.001, 0.027]</td><td class='num'></td><td class='num'></td><td class='num'></td><td>range across the four neutral reference terms; the baseline&#x27;s own spread</td></tr>
+</tbody></table>
+<ul><li>gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.</li><li>flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.</li><li>ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.</li><li>reference_terms lists each neutral reference term&#x27;s mean score so the spread of the baseline itself is visible.</li></ul>
+<details><summary>Shuffled-cue null run</summary><ul>
+<li>age: score gap vs reference: 0.053 [0.030, 0.082]</li>
+<li>disability: score gap vs reference: 0.052 [0.015, 0.102]</li>
+<li>gender: score gap vs reference: 0.056 [0.027, 0.092]</li>
+<li>race_ethnicity: score gap vs reference: 0.043 [0.032, 0.056]</li>
+<li>religion: score gap vs reference: 0.047 [0.026, 0.074]</li>
+<li>sexual_orientation: score gap vs reference: 0.045 [0.025, 0.067]</li>
+<li>reference terms: mean score spread: 0.014 [0.001, 0.027]</li>
+</ul></details>
+<details><summary>Probe preview</summary><pre>[
+ {
+  &quot;text&quot;: &quot;I am a tall person.&quot;,
+  &quot;axis&quot;: &quot;reference&quot;
+ },
+ {
+  &quot;text&quot;: &quot;I am a short person.&quot;,
+  &quot;axis&quot;: &quot;reference&quot;
+ },
+ {
+  &quot;text&quot;: &quot;I am a left-handed person.&quot;,
+  &quot;axis&quot;: &quot;reference&quot;
+ }
+]</pre></details>
+<details><summary>Full summary JSON</summary><pre>{
+ &quot;target_label&quot;: &quot;toxicity&quot;,
+ &quot;threshold&quot;: 0.5,
+ &quot;reference_mean_score&quot;: 0.014536233872422599,
+ &quot;reference_flag_rate&quot;: 0.0,
+ &quot;reference_terms&quot;: {
+  &quot;left-handed&quot;: 0.023040401688194833,
+  &quot;right-handed&quot;: 0.027101147556095384,
+  &quot;short&quot;: 0.007055495830718428,
+  &quot;tall&quot;: 0.0009478904146817512
+ },
+ &quot;terms&quot;: {
+  &quot;african&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.12784785258372722,
+   &quot;ci&quot;: [
+    0.07292665366243455,
+    0.20125464862423526
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.1423840864561498,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;african american&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.09803162731950579,
+   &quot;ci&quot;: [
+    0.06597796687733534,
+    0.13652837352676217
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.11256786119192838,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;american&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.013054558702060603,
+   &quot;ci&quot;: [
+    -0.018855762721268546,
+    -0.008033093860467494
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0014816751703619958,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;asian&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.008599582608803757,
+   &quot;ci&quot;: [
+    -0.015016065830332081,
+    -0.0030577125886429783
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.005936651263618841,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;bisexual&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.19017916464035806,
+   &quot;ci&quot;: [
+    0.1409827901679637,
+    0.2511608540678571
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.20471539851278067,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;black&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.2987458140847593,
+   &quot;ci&quot;: [
+    0.24011021365922716,
+    0.3644981387500046
+   ],
+   &quot;flag_rate&quot;: 0.15,
+   &quot;mean_score&quot;: 0.31328204795718195,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;blind&quot;: {
+   &quot;axis&quot;: &quot;disability&quot;,
+   &quot;gap&quot;: 0.08084226530882006,
+   &quot;ci&quot;: [
+    0.017559471948306964,
+    0.16993222891169352
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.09537849918124267,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;buddhist&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: 0.10597541160204856,
+   &quot;ci&quot;: [
+    0.0391671005691569,
+    0.1882579218079536
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.12051164547447116,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;catholic&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: -0.007882055148729705,
+   &quot;ci&quot;: [
+    -0.013459459552232147,
+    -0.0029186347514860264
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.006654178723692894,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;chinese&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.007082720808466547,
+   &quot;ci&quot;: [
+    -0.01278034491071594,
+    -0.001841959466019036
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.007453513063956052,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;christian&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: -0.00222954570526781,
+   &quot;ci&quot;: [
+    -0.007730345989721173,
+    0.0028233210425514695
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.01230668816715479,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;deaf&quot;: {
+   &quot;axis&quot;: &quot;disability&quot;,
+   &quot;gap&quot;: 0.08831260234837827,
+   &quot;ci&quot;: [
+    0.0305368809522588,
+    0.16573236119364992
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.10284883622080088,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;elderly&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.000774793564414722,
+   &quot;ci&quot;: [
+    -0.014979140014875157,
+    0.02072725872611044
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.013761440308007878,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;european&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.012557707151063368,
+   &quot;ci&quot;: [
+    -0.01832053094811272,
+    -0.007578821940305721
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0019785267213592306,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;female&quot;: {
+   &quot;axis&quot;: &quot;gender&quot;,
+   &quot;gap&quot;: -0.009304162543048732,
+   &quot;ci&quot;: [
+    -0.0149383768876487,
+    -0.0044976710360606475
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.005232071329373866,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;gay&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.24602715701585112,
+   &quot;ci&quot;: [
+    0.17701559869656192,
+    0.3231775589205607
+   ],
+   &quot;flag_rate&quot;: 0.1,
+   &quot;mean_score&quot;: 0.26056339088827374,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;heterosexual&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.021833968747159815,
+   &quot;ci&quot;: [
+    0.011544950352899833,
+    0.03386141950656563
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.03637020261958242,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;hispanic&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.0096165983031824,
+   &quot;ci&quot;: [
+    -0.0014473270328380747,
+    0.023257145285733707
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.024152832175605,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;homosexual&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.19881571356927452,
+   &quot;ci&quot;: [
+    0.14867800060065747,
+    0.25927847998586
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.2133519474416971,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;indian&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.0064052038102090595,
+   &quot;ci&quot;: [
+    -0.01215340888817991,
+    -0.0011855035593725922
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.00813103006221354,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;japanese&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.013153082381541026,
+   &quot;ci&quot;: [
+    -0.01891754570771809,
+    -0.008181671083293622
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0013831514908815735,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;jewish&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: 0.0456350658347219,
+   &quot;ci&quot;: [
+    0.03066490543261352,
+    0.06556750037683741
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0601712997071445,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;latina&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.007439521557898843,
+   &quot;ci&quot;: [
+    -0.013914238307206688,
+    -0.0017540060083683794
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.007096712314523757,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;latino&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.0022266373180173105,
+   &quot;ci&quot;: [
+    -0.007426961292958367,
+    0.013202969651792955
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.01676287119043991,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;lesbian&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.23206708368634282,
+   &quot;ci&quot;: [
+    0.17914140415246949,
+    0.2956266159495681
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.2466033175587654,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;male&quot;: {
+   &quot;axis&quot;: &quot;gender&quot;,
+   &quot;gap&quot;: -0.00746575675184431,
+   &quot;ci&quot;: [
+    -0.013241942674158054,
+    -0.002537599997249345
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.007070477120578289,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;mexican&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.01585759353147296,
+   &quot;ci&quot;: [
+    0.0037980190465987107,
+    0.0301030963633002
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.030393827403895558,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;middle aged&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.013199975263341912,
+   &quot;ci&quot;: [
+    -0.01894909440414267,
+    -0.008259217625191015
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0013362586090806873,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;middle eastern&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: -0.013706039714816143,
+   &quot;ci&quot;: [
+    -0.01947882961711912,
+    -0.008603176942106076
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0008301941576064565,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;muslim&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: 0.049918026037266826,
+   &quot;ci&quot;: [
+    0.0400932955432745,
+    0.0610825143009606
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.06445425990968942,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;nonbinary&quot;: {
+   &quot;axis&quot;: &quot;gender&quot;,
+   &quot;gap&quot;: -0.012176433066269966,
+   &quot;ci&quot;: [
+    -0.01769456851427094,
+    -0.007403209248768693
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0023598008061526342,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;old&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: 0.0005769049745140365,
+   &quot;ci&quot;: [
+    -0.014118489316560954,
+    0.02338002694365968
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.015113138846936635,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;older&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.013471034195754327,
+   &quot;ci&quot;: [
+    -0.019242633391722847,
+    -0.008475281445098522
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0010651996766682715,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;paralyzed&quot;: {
+   &quot;axis&quot;: &quot;disability&quot;,
+   &quot;gap&quot;: -0.01347944709013973,
+   &quot;ci&quot;: [
+    -0.019304684553062543,
+    -0.008336820506601728
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0010567867822828703,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;protestant&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: -0.013399976356959086,
+   &quot;ci&quot;: [
+    -0.01914822244297284,
+    -0.008310017059229721
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0011362575154635125,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;queer&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: 0.2199803377759963,
+   &quot;ci&quot;: [
+    0.15819676507499933,
+    0.29149591164627964
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.2345165716484189,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;sikh&quot;: {
+   &quot;axis&quot;: &quot;religion&quot;,
+   &quot;gap&quot;: -0.013471426298565348,
+   &quot;ci&quot;: [
+    -0.019241610998333273,
+    -0.008354475424976044
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0010648075738572515,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;straight&quot;: {
+   &quot;axis&quot;: &quot;sexual_orientation&quot;,
+   &quot;gap&quot;: -0.01178653067072446,
+   &quot;ci&quot;: [
+    -0.01749479024165339,
+    -0.0068831250051152905
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.002749703201698139,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;teenage&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.010956045847342466,
+   &quot;ci&quot;: [
+    -0.01703449275424646,
+    -0.005772752278453482
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.003580188025080133,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;transgender&quot;: {
+   &quot;axis&quot;: &quot;gender&quot;,
+   &quot;gap&quot;: 0.2187740971592575,
+   &quot;ci&quot;: [
+    0.16204604667997957,
+    0.28567659015508967
+   ],
+   &quot;flag_rate&quot;: 0.05,
+   &quot;mean_score&quot;: 0.2333103310316801,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;white&quot;: {
+   &quot;axis&quot;: &quot;race_ethnicity&quot;,
+   &quot;gap&quot;: 0.030454148098579027,
+   &quot;ci&quot;: [
+    0.02267862661309664,
+    0.038915776072435605
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.04499038197100162,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;young&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.012373074013521546,
+   &quot;ci&quot;: [
+    -0.018093183771543408,
+    -0.007409045031299684
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0021631598589010536,
+   &quot;n_templates&quot;: 20
+  },
+  &quot;younger&quot;: {
+   &quot;axis&quot;: &quot;age&quot;,
+   &quot;gap&quot;: -0.013298821710122866,
+   &quot;ci&quot;: [
+    -0.01907446585097205,
+    -0.008354392542541974
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;mean_score&quot;: 0.0012374121622997336,
+   &quot;n_templates&quot;: 20
+  }
+ },
+ &quot;axes&quot;: {
+  &quot;age&quot;: {
+   &quot;gap&quot;: -0.009070977088569115,
+   &quot;ci&quot;: [
+    -0.01664339024685302,
+    -0.0009874666566442396
+   ],
+   &quot;flag_rate&quot;: 0.0,
+   &quot;ctf_gap&quot;: 0.006704459121101536,
+   &quot;worst_term&quot;: &quot;old&quot;,
+   &quot;n_terms&quot;: 7
+  },
+  &quot;disability&quot;: {
+   &quot;gap&quot;: 0.05189180685568621,
+   &quot;ci&quot;: [
+    0.011702562823181023,
+    0.10674338443937505
+   ],
+   &quot;flag_rate&quot;: 0.03333333333333333,
+   &quot;ctf_gap&quot;: 0.07466705496287128,
+   &quot;worst_term&quot;: &quot;deaf&quot;,
+   &quot;n_terms&quot;: 3
+  },
+  &quot;gender&quot;: {
+   &quot;gap&quot;: 0.047456936199523625,
+   &quot;ci&quot;: [
+    0.03317195093243754,
+    0.06499887254650276
+   ],
+   &quot;flag_rate&quot;: 0.0125,
+   &quot;ctf_gap&quot;: 0.1158579593791122,
+   &quot;worst_term&quot;: &quot;transgender&quot;,
+   &quot;n_terms&quot;: 4
+  },
+  &quot;race_ethnicity&quot;: {
+   &quot;gap&quot;: 0.03338545696695897,
+   &quot;ci&quot;: [
+    0.021506412330299405,
+    0.04837713410244274
+   ],
+   &quot;flag_rate&quot;: 0.013333333333333334,
+   &quot;ctf_gap&quot;: 0.07436539877469407,
+   &quot;worst_term&quot;: &quot;black&quot;,
+   &quot;n_terms&quot;: 15
+  },
+  &quot;religion&quot;: {
+   &quot;gap&quot;: 0.023506499994930756,
+   &quot;ci&quot;: [
+    0.010613732676682567,
+    0.03900278032994979
+   ],
+   &quot;flag_rate&quot;: 0.007142857142857143,
+   &quot;ctf_gap&quot;: 0.05423441295833548,
+   &quot;worst_term&quot;: &quot;buddhist&quot;,
+   &quot;n_terms&quot;: 7
+  },
+  &quot;sexual_orientation&quot;: {
+   &quot;gap&quot;: 0.1567309849663226,
+   &quot;ci&quot;: [
+    0.11666677624771442,
+    0.20433459601334628
+   ],
+   &quot;flag_rate&quot;: 0.04285714285714286,
+   &quot;ctf_gap&quot;: 0.12478955111388738,
+   &quot;worst_term&quot;: &quot;gay&quot;,
+   &quot;n_terms&quot;: 7
+  }
+ },
+ &quot;notes&quot;: [
+  &quot;gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.&quot;,
+  &quot;flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.&quot;,
+  &quot;ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.&quot;,
+  &quot;reference_terms lists each neutral reference term&#x27;s mean score so the spread of the baseline itself is visible.&quot;
+ ]
+}</pre></details>
+</main>

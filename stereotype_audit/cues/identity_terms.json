@@ -1,0 +1,16 @@
+{
+  "name": "identity_terms",
+  "description": "Identity terms whose presence in otherwise neutral sentences is known to raise toxicity-classifier scores.",
+  "source": "Dixon, L., Li, J., Sorensen, J., Thain, N. & Vasserman, L. (2018). Measuring and Mitigating Unintended Bias in Text Classification. AIES 2018; term list from the accompanying conversationai/unintended-ml-bias-analysis repository.",
+  "url": "https://github.com/conversationai/unintended-ml-bias-analysis",
+  "axes": {
+    "sexual_orientation": ["lesbian", "gay", "bisexual", "queer", "homosexual", "straight", "heterosexual"],
+    "gender": ["male", "female", "transgender", "nonbinary"],
+    "race_ethnicity": ["african", "african american", "black", "white", "european", "hispanic", "latino", "latina", "mexican", "american", "asian", "indian", "middle eastern", "chinese", "japanese"],
+    "religion": ["christian", "muslim", "jewish", "buddhist", "catholic", "protestant", "sikh"],
+    "age": ["old", "older", "young", "younger", "teenage", "middle aged", "elderly"],
+    "disability": ["blind", "deaf", "paralyzed"]
+  },
+  "reference_terms": ["tall", "short", "left-handed", "right-handed"],
+  "notes": "Reference terms are neutral physical descriptors used as the no-identity baseline for the same templates."
+}

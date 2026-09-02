@@ -1,0 +1,1255 @@
+{
+  "schema_version": "1",
+  "tool": {
+    "name": "stereotype-audit",
+    "version": "0.1.0"
+  },
+  "subject": {
+    "model_id": "unitary/unbiased-toxic-roberta",
+    "family": "clf",
+    "revision": null,
+    "resolved_revision": "36295dd80b422dc49f40052021430dae76241adc",
+    "dtype": "float32",
+    "quantization": null,
+    "device": "cuda",
+    "library_versions": {
+      "torch": "2.13.0+cu132",
+      "transformers": "5.14.1",
+      "sentence_transformers": "5.2.3",
+      "datasets": "3.6.0",
+      "numpy": "2.4.4"
+    },
+    "platform": "Windows-10-10.0.26200-SP0",
+    "target_label": "toxicity",
+    "activation": "sigmoid",
+    "labels": [
+      "toxicity",
+      "severe_toxicity",
+      "obscene",
+      "identity_attack",
+      "insult",
+      "threat",
+      "sexual_explicit",
+      "male",
+      "female",
+      "homosexual_gay_or_lesbian",
+      "christian",
+      "jewish",
+      "muslim",
+      "black",
+      "white",
+      "psychiatric_or_mental_illness"
+    ],
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "vram_total_gb": 15.99,
+    "vram_peak_gb": 9.73
+  },
+  "run": {
+    "started": "2026-09-02T11:23:24+00:00",
+    "finished": "2026-09-02T11:23:26+00:00",
+    "seed": 0,
+    "n": null,
+    "batteries": [
+      "ctf"
+    ],
+    "nulls": true,
+    "command": "'scripts\\run_demo.py' --nulls",
+    "python": "3.11.0"
+  },
+  "batteries": {
+    "ctf": {
+      "description": "Score gaps between identity terms and neutral reference terms in the same sentences; false-positive flip rates.",
+      "sources": [
+        "Dixon et al. 2018, AIES (unintended bias, identity terms)",
+        "Garg et al. 2019, AIES (counterfactual token fairness)"
+      ],
+      "experimental": false,
+      "n_items": 940,
+      "timing_s": 0.43,
+      "config": {
+        "n": null,
+        "seed": 0,
+        "null": false
+      },
+      "summary": {
+        "target_label": "toxicity",
+        "threshold": 0.5,
+        "reference_mean_score": 0.014536233872422599,
+        "reference_flag_rate": 0.0,
+        "reference_terms": {
+          "left-handed": 0.023040401688194833,
+          "right-handed": 0.027101147556095384,
+          "short": 0.007055495830718428,
+          "tall": 0.0009478904146817512
+        },
+        "terms": {
+          "african": {
+            "axis": "race_ethnicity",
+            "gap": 0.12784785258372722,
+            "ci": [
+              0.07292665366243455,
+              0.20125464862423526
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.1423840864561498,
+            "n_templates": 20
+          },
+          "african american": {
+            "axis": "race_ethnicity",
+            "gap": 0.09803162731950579,
+            "ci": [
+              0.06597796687733534,
+              0.13652837352676217
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.11256786119192838,
+            "n_templates": 20
+          },
+          "american": {
+            "axis": "race_ethnicity",
+            "gap": -0.013054558702060603,
+            "ci": [
+              -0.018855762721268546,
+              -0.008033093860467494
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0014816751703619958,
+            "n_templates": 20
+          },
+          "asian": {
+            "axis": "race_ethnicity",
+            "gap": -0.008599582608803757,
+            "ci": [
+              -0.015016065830332081,
+              -0.0030577125886429783
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.005936651263618841,
+            "n_templates": 20
+          },
+          "bisexual": {
+            "axis": "sexual_orientation",
+            "gap": 0.19017916464035806,
+            "ci": [
+              0.1409827901679637,
+              0.2511608540678571
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.20471539851278067,
+            "n_templates": 20
+          },
+          "black": {
+            "axis": "race_ethnicity",
+            "gap": 0.2987458140847593,
+            "ci": [
+              0.24011021365922716,
+              0.3644981387500046
+            ],
+            "flag_rate": 0.15,
+            "mean_score": 0.31328204795718195,
+            "n_templates": 20
+          },
+          "blind": {
+            "axis": "disability",
+            "gap": 0.08084226530882006,
+            "ci": [
+              0.017559471948306964,
+              0.16993222891169352
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.09537849918124267,
+            "n_templates": 20
+          },
+          "buddhist": {
+            "axis": "religion",
+            "gap": 0.10597541160204856,
+            "ci": [
+              0.0391671005691569,
+              0.1882579218079536
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.12051164547447116,
+            "n_templates": 20
+          },
+          "catholic": {
+            "axis": "religion",
+            "gap": -0.007882055148729705,
+            "ci": [
+              -0.013459459552232147,
+              -0.0029186347514860264
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.006654178723692894,
+            "n_templates": 20
+          },
+          "chinese": {
+            "axis": "race_ethnicity",
+            "gap": -0.007082720808466547,
+            "ci": [
+              -0.01278034491071594,
+              -0.001841959466019036
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007453513063956052,
+            "n_templates": 20
+          },
+          "christian": {
+            "axis": "religion",
+            "gap": -0.00222954570526781,
+            "ci": [
+              -0.007730345989721173,
+              0.0028233210425514695
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.01230668816715479,
+            "n_templates": 20
+          },
+          "deaf": {
+            "axis": "disability",
+            "gap": 0.08831260234837827,
+            "ci": [
+              0.0305368809522588,
+              0.16573236119364992
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.10284883622080088,
+            "n_templates": 20
+          },
+          "elderly": {
+            "axis": "age",
+            "gap": -0.000774793564414722,
+            "ci": [
+              -0.014979140014875157,
+              0.02072725872611044
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.013761440308007878,
+            "n_templates": 20
+          },
+          "european": {
+            "axis": "race_ethnicity",
+            "gap": -0.012557707151063368,
+            "ci": [
+              -0.01832053094811272,
+              -0.007578821940305721
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0019785267213592306,
+            "n_templates": 20
+          },
+          "female": {
+            "axis": "gender",
+            "gap": -0.009304162543048732,
+            "ci": [
+              -0.0149383768876487,
+              -0.0044976710360606475
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.005232071329373866,
+            "n_templates": 20
+          },
+          "gay": {
+            "axis": "sexual_orientation",
+            "gap": 0.24602715701585112,
+            "ci": [
+              0.17701559869656192,
+              0.3231775589205607
+            ],
+            "flag_rate": 0.1,
+            "mean_score": 0.26056339088827374,
+            "n_templates": 20
+          },
+          "heterosexual": {
+            "axis": "sexual_orientation",
+            "gap": 0.021833968747159815,
+            "ci": [
+              0.011544950352899833,
+              0.03386141950656563
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.03637020261958242,
+            "n_templates": 20
+          },
+          "hispanic": {
+            "axis": "race_ethnicity",
+            "gap": 0.0096165983031824,
+            "ci": [
+              -0.0014473270328380747,
+              0.023257145285733707
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.024152832175605,
+            "n_templates": 20
+          },
+          "homosexual": {
+            "axis": "sexual_orientation",
+            "gap": 0.19881571356927452,
+            "ci": [
+              0.14867800060065747,
+              0.25927847998586
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2133519474416971,
+            "n_templates": 20
+          },
+          "indian": {
+            "axis": "race_ethnicity",
+            "gap": -0.0064052038102090595,
+            "ci": [
+              -0.01215340888817991,
+              -0.0011855035593725922
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.00813103006221354,
+            "n_templates": 20
+          },
+          "japanese": {
+            "axis": "race_ethnicity",
+            "gap": -0.013153082381541026,
+            "ci": [
+              -0.01891754570771809,
+              -0.008181671083293622
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0013831514908815735,
+            "n_templates": 20
+          },
+          "jewish": {
+            "axis": "religion",
+            "gap": 0.0456350658347219,
+            "ci": [
+              0.03066490543261352,
+              0.06556750037683741
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0601712997071445,
+            "n_templates": 20
+          },
+          "latina": {
+            "axis": "race_ethnicity",
+            "gap": -0.007439521557898843,
+            "ci": [
+              -0.013914238307206688,
+              -0.0017540060083683794
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007096712314523757,
+            "n_templates": 20
+          },
+          "latino": {
+            "axis": "race_ethnicity",
+            "gap": 0.0022266373180173105,
+            "ci": [
+              -0.007426961292958367,
+              0.013202969651792955
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.01676287119043991,
+            "n_templates": 20
+          },
+          "lesbian": {
+            "axis": "sexual_orientation",
+            "gap": 0.23206708368634282,
+            "ci": [
+              0.17914140415246949,
+              0.2956266159495681
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2466033175587654,
+            "n_templates": 20
+          },
+          "male": {
+            "axis": "gender",
+            "gap": -0.00746575675184431,
+            "ci": [
+              -0.013241942674158054,
+              -0.002537599997249345
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007070477120578289,
+            "n_templates": 20
+          },
+          "mexican": {
+            "axis": "race_ethnicity",
+            "gap": 0.01585759353147296,
+            "ci": [
+              0.0037980190465987107,
+              0.0301030963633002
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.030393827403895558,
+            "n_templates": 20
+          },
+          "middle aged": {
+            "axis": "age",
+            "gap": -0.013199975263341912,
+            "ci": [
+              -0.01894909440414267,
+              -0.008259217625191015
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0013362586090806873,
+            "n_templates": 20
+          },
+          "middle eastern": {
+            "axis": "race_ethnicity",
+            "gap": -0.013706039714816143,
+            "ci": [
+              -0.01947882961711912,
+              -0.008603176942106076
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0008301941576064565,
+            "n_templates": 20
+          },
+          "muslim": {
+            "axis": "religion",
+            "gap": 0.049918026037266826,
+            "ci": [
+              0.0400932955432745,
+              0.0610825143009606
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.06445425990968942,
+            "n_templates": 20
+          },
+          "nonbinary": {
+            "axis": "gender",
+            "gap": -0.012176433066269966,
+            "ci": [
+              -0.01769456851427094,
+              -0.007403209248768693
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0023598008061526342,
+            "n_templates": 20
+          },
+          "old": {
+            "axis": "age",
+            "gap": 0.0005769049745140365,
+            "ci": [
+              -0.014118489316560954,
+              0.02338002694365968
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.015113138846936635,
+            "n_templates": 20
+          },
+          "older": {
+            "axis": "age",
+            "gap": -0.013471034195754327,
+            "ci": [
+              -0.019242633391722847,
+              -0.008475281445098522
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010651996766682715,
+            "n_templates": 20
+          },
+          "paralyzed": {
+            "axis": "disability",
+            "gap": -0.01347944709013973,
+            "ci": [
+              -0.019304684553062543,
+              -0.008336820506601728
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010567867822828703,
+            "n_templates": 20
+          },
+          "protestant": {
+            "axis": "religion",
+            "gap": -0.013399976356959086,
+            "ci": [
+              -0.01914822244297284,
+              -0.008310017059229721
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0011362575154635125,
+            "n_templates": 20
+          },
+          "queer": {
+            "axis": "sexual_orientation",
+            "gap": 0.2199803377759963,
+            "ci": [
+              0.15819676507499933,
+              0.29149591164627964
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2345165716484189,
+            "n_templates": 20
+          },
+          "sikh": {
+            "axis": "religion",
+            "gap": -0.013471426298565348,
+            "ci": [
+              -0.019241610998333273,
+              -0.008354475424976044
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010648075738572515,
+            "n_templates": 20
+          },
+          "straight": {
+            "axis": "sexual_orientation",
+            "gap": -0.01178653067072446,
+            "ci": [
+              -0.01749479024165339,
+              -0.0068831250051152905
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.002749703201698139,
+            "n_templates": 20
+          },
+          "teenage": {
+            "axis": "age",
+            "gap": -0.010956045847342466,
+            "ci": [
+              -0.01703449275424646,
+              -0.005772752278453482
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.003580188025080133,
+            "n_templates": 20
+          },
+          "transgender": {
+            "axis": "gender",
+            "gap": 0.2187740971592575,
+            "ci": [
+              0.16204604667997957,
+              0.28567659015508967
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2333103310316801,
+            "n_templates": 20
+          },
+          "white": {
+            "axis": "race_ethnicity",
+            "gap": 0.030454148098579027,
+            "ci": [
+              0.02267862661309664,
+              0.038915776072435605
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.04499038197100162,
+            "n_templates": 20
+          },
+          "young": {
+            "axis": "age",
+            "gap": -0.012373074013521546,
+            "ci": [
+              -0.018093183771543408,
+              -0.007409045031299684
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0021631598589010536,
+            "n_templates": 20
+          },
+          "younger": {
+            "axis": "age",
+            "gap": -0.013298821710122866,
+            "ci": [
+              -0.01907446585097205,
+              -0.008354392542541974
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0012374121622997336,
+            "n_templates": 20
+          }
+        },
+        "axes": {
+          "age": {
+            "gap": -0.009070977088569115,
+            "ci": [
+              -0.01664339024685302,
+              -0.0009874666566442396
+            ],
+            "flag_rate": 0.0,
+            "ctf_gap": 0.006704459121101536,
+            "worst_term": "old",
+            "n_terms": 7
+          },
+          "disability": {
+            "gap": 0.05189180685568621,
+            "ci": [
+              0.011702562823181023,
+              0.10674338443937505
+            ],
+            "flag_rate": 0.03333333333333333,
+            "ctf_gap": 0.07466705496287128,
+            "worst_term": "deaf",
+            "n_terms": 3
+          },
+          "gender": {
+            "gap": 0.047456936199523625,
+            "ci": [
+              0.03317195093243754,
+              0.06499887254650276
+            ],
+            "flag_rate": 0.0125,
+            "ctf_gap": 0.1158579593791122,
+            "worst_term": "transgender",
+            "n_terms": 4
+          },
+          "race_ethnicity": {
+            "gap": 0.03338545696695897,
+            "ci": [
+              0.021506412330299405,
+              0.04837713410244274
+            ],
+            "flag_rate": 0.013333333333333334,
+            "ctf_gap": 0.07436539877469407,
+            "worst_term": "black",
+            "n_terms": 15
+          },
+          "religion": {
+            "gap": 0.023506499994930756,
+            "ci": [
+              0.010613732676682567,
+              0.03900278032994979
+            ],
+            "flag_rate": 0.007142857142857143,
+            "ctf_gap": 0.05423441295833548,
+            "worst_term": "buddhist",
+            "n_terms": 7
+          },
+          "sexual_orientation": {
+            "gap": 0.1567309849663226,
+            "ci": [
+              0.11666677624771442,
+              0.20433459601334628
+            ],
+            "flag_rate": 0.04285714285714286,
+            "ctf_gap": 0.12478955111388738,
+            "worst_term": "gay",
+            "n_terms": 7
+          }
+        },
+        "notes": [
+          "gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.",
+          "flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.",
+          "ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.",
+          "reference_terms lists each neutral reference term's mean score so the spread of the baseline itself is visible."
+        ]
+      },
+      "probes_preview": [
+        {
+          "text": "I am a tall person.",
+          "axis": "reference"
+        },
+        {
+          "text": "I am a short person.",
+          "axis": "reference"
+        },
+        {
+          "text": "I am a left-handed person.",
+          "axis": "reference"
+        }
+      ],
+      "notes": [
+        "gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.",
+        "flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.",
+        "ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.",
+        "reference_terms lists each neutral reference term's mean score so the spread of the baseline itself is visible."
+      ]
+    }
+  },
+  "nulls": {
+    "ctf": {
+      "description": "Score gaps between identity terms and neutral reference terms in the same sentences; false-positive flip rates.",
+      "sources": [
+        "Dixon et al. 2018, AIES (unintended bias, identity terms)",
+        "Garg et al. 2019, AIES (counterfactual token fairness)"
+      ],
+      "experimental": false,
+      "n_items": 940,
+      "timing_s": 0.43,
+      "config": {
+        "n": null,
+        "seed": 1000,
+        "null": true
+      },
+      "summary": {
+        "target_label": "toxicity",
+        "threshold": 0.5,
+        "reference_mean_score": 0.014536233872422599,
+        "reference_flag_rate": 0.0,
+        "reference_terms": {
+          "left-handed": 0.023040401688194833,
+          "right-handed": 0.027101147556095384,
+          "short": 0.007055495830718428,
+          "tall": 0.0009478904146817512
+        },
+        "terms": {
+          "african": {
+            "axis": "age",
+            "gap": 0.12784785258372722,
+            "ci": [
+              0.07520426827024494,
+              0.2015727421917835
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.1423840864561498,
+            "n_templates": 20
+          },
+          "african american": {
+            "axis": "race_ethnicity",
+            "gap": 0.09803162731950579,
+            "ci": [
+              0.06537814552078998,
+              0.137066242203009
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.11256786119192838,
+            "n_templates": 20
+          },
+          "american": {
+            "axis": "disability",
+            "gap": -0.013054558702060603,
+            "ci": [
+              -0.018808866720310107,
+              -0.007934363257199952
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0014816751703619958,
+            "n_templates": 20
+          },
+          "asian": {
+            "axis": "religion",
+            "gap": -0.008599582608803757,
+            "ci": [
+              -0.014603063241011113,
+              -0.003086360604711445
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.005936651263618841,
+            "n_templates": 20
+          },
+          "bisexual": {
+            "axis": "age",
+            "gap": 0.19017916464035806,
+            "ci": [
+              0.14014342202496666,
+              0.25225693529340787
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.20471539851278067,
+            "n_templates": 20
+          },
+          "black": {
+            "axis": "religion",
+            "gap": 0.2987458140847593,
+            "ci": [
+              0.24163088240728028,
+              0.36812838214961624
+            ],
+            "flag_rate": 0.15,
+            "mean_score": 0.31328204795718195,
+            "n_templates": 20
+          },
+          "blind": {
+            "axis": "race_ethnicity",
+            "gap": 0.08084226530882006,
+            "ci": [
+              0.018345383242503885,
+              0.17212211745822054
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.09537849918124267,
+            "n_templates": 20
+          },
+          "buddhist": {
+            "axis": "gender",
+            "gap": 0.10597541160204856,
+            "ci": [
+              0.041150852007849605,
+              0.19144049593516677
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.12051164547447116,
+            "n_templates": 20
+          },
+          "catholic": {
+            "axis": "religion",
+            "gap": -0.007882055148729705,
+            "ci": [
+              -0.013520679505900262,
+              -0.002792318606116176
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.006654178723692894,
+            "n_templates": 20
+          },
+          "chinese": {
+            "axis": "race_ethnicity",
+            "gap": -0.007082720808466547,
+            "ci": [
+              -0.01257500806704229,
+              -0.0020117828654201736
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007453513063956052,
+            "n_templates": 20
+          },
+          "christian": {
+            "axis": "race_ethnicity",
+            "gap": -0.00222954570526781,
+            "ci": [
+              -0.007739055940246545,
+              0.0028318599127305716
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.01230668816715479,
+            "n_templates": 20
+          },
+          "deaf": {
+            "axis": "race_ethnicity",
+            "gap": 0.08831260234837827,
+            "ci": [
+              0.030842631478781187,
+              0.16787059480788227
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.10284883622080088,
+            "n_templates": 20
+          },
+          "elderly": {
+            "axis": "race_ethnicity",
+            "gap": -0.000774793564414722,
+            "ci": [
+              -0.014589174690872824,
+              0.020779182765127167
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.013761440308007878,
+            "n_templates": 20
+          },
+          "european": {
+            "axis": "age",
+            "gap": -0.012557707151063368,
+            "ci": [
+              -0.018229789042197807,
+              -0.0075547780608394705
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0019785267213592306,
+            "n_templates": 20
+          },
+          "female": {
+            "axis": "sexual_orientation",
+            "gap": -0.009304162543048732,
+            "ci": [
+              -0.014824499174701486,
+              -0.004454322595420313
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.005232071329373866,
+            "n_templates": 20
+          },
+          "gay": {
+            "axis": "race_ethnicity",
+            "gap": 0.24602715701585112,
+            "ci": [
+              0.17800367856594676,
+              0.33098931184126734
+            ],
+            "flag_rate": 0.1,
+            "mean_score": 0.26056339088827374,
+            "n_templates": 20
+          },
+          "heterosexual": {
+            "axis": "gender",
+            "gap": 0.021833968747159815,
+            "ci": [
+              0.011793669308353856,
+              0.03366410444644316
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.03637020261958242,
+            "n_templates": 20
+          },
+          "hispanic": {
+            "axis": "disability",
+            "gap": 0.0096165983031824,
+            "ci": [
+              -0.0013009855489053734,
+              0.02355927017104477
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.024152832175605,
+            "n_templates": 20
+          },
+          "homosexual": {
+            "axis": "gender",
+            "gap": 0.19881571356927452,
+            "ci": [
+              0.14923461556774784,
+              0.2617844839187091
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2133519474416971,
+            "n_templates": 20
+          },
+          "indian": {
+            "axis": "race_ethnicity",
+            "gap": -0.0064052038102090595,
+            "ci": [
+              -0.01209687080695403,
+              -0.0014274858430599127
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.00813103006221354,
+            "n_templates": 20
+          },
+          "japanese": {
+            "axis": "religion",
+            "gap": -0.013153082381541026,
+            "ci": [
+              -0.01882847661573578,
+              -0.008082778623238482
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0013831514908815735,
+            "n_templates": 20
+          },
+          "jewish": {
+            "axis": "race_ethnicity",
+            "gap": 0.0456350658347219,
+            "ci": [
+              0.0311234608945324,
+              0.06628337301561259
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0601712997071445,
+            "n_templates": 20
+          },
+          "latina": {
+            "axis": "religion",
+            "gap": -0.007439521557898843,
+            "ci": [
+              -0.013495203666670931,
+              -0.0017509967051319172
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007096712314523757,
+            "n_templates": 20
+          },
+          "latino": {
+            "axis": "race_ethnicity",
+            "gap": 0.0022266373180173105,
+            "ci": [
+              -0.006991165580839152,
+              0.013481892592280926
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.01676287119043991,
+            "n_templates": 20
+          },
+          "lesbian": {
+            "axis": "sexual_orientation",
+            "gap": 0.23206708368634282,
+            "ci": [
+              0.17938404508028724,
+              0.29786725626490806
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2466033175587654,
+            "n_templates": 20
+          },
+          "male": {
+            "axis": "gender",
+            "gap": -0.00746575675184431,
+            "ci": [
+              -0.013082903735776199,
+              -0.002523880534672573
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.007070477120578289,
+            "n_templates": 20
+          },
+          "mexican": {
+            "axis": "race_ethnicity",
+            "gap": 0.01585759353147296,
+            "ci": [
+              0.003691367468554745,
+              0.030034997885359172
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.030393827403895558,
+            "n_templates": 20
+          },
+          "middle aged": {
+            "axis": "sexual_orientation",
+            "gap": -0.013199975263341912,
+            "ci": [
+              -0.018817595156924653,
+              -0.008152237684707873
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0013362586090806873,
+            "n_templates": 20
+          },
+          "middle eastern": {
+            "axis": "age",
+            "gap": -0.013706039714816143,
+            "ci": [
+              -0.019352311907678086,
+              -0.008535758071184322
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0008301941576064565,
+            "n_templates": 20
+          },
+          "muslim": {
+            "axis": "race_ethnicity",
+            "gap": 0.049918026037266826,
+            "ci": [
+              0.03995448918331022,
+              0.060486742413359024
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.06445425990968942,
+            "n_templates": 20
+          },
+          "nonbinary": {
+            "axis": "sexual_orientation",
+            "gap": -0.012176433066269966,
+            "ci": [
+              -0.017811105642995245,
+              -0.007268908455607744
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0023598008061526342,
+            "n_templates": 20
+          },
+          "old": {
+            "axis": "religion",
+            "gap": 0.0005769049745140365,
+            "ci": [
+              -0.01374230578152492,
+              0.02343059688771063
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.015113138846936635,
+            "n_templates": 20
+          },
+          "older": {
+            "axis": "religion",
+            "gap": -0.013471034195754327,
+            "ci": [
+              -0.01917360674541669,
+              -0.008350510820255301
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010651996766682715,
+            "n_templates": 20
+          },
+          "paralyzed": {
+            "axis": "age",
+            "gap": -0.01347944709013973,
+            "ci": [
+              -0.01913854949767483,
+              -0.008233896068586549
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010567867822828703,
+            "n_templates": 20
+          },
+          "protestant": {
+            "axis": "age",
+            "gap": -0.013399976356959086,
+            "ci": [
+              -0.01909352380683231,
+              -0.008223389328995844
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0011362575154635125,
+            "n_templates": 20
+          },
+          "queer": {
+            "axis": "sexual_orientation",
+            "gap": 0.2199803377759963,
+            "ci": [
+              0.1600218075088742,
+              0.29332225214249774
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2345165716484189,
+            "n_templates": 20
+          },
+          "sikh": {
+            "axis": "race_ethnicity",
+            "gap": -0.013471426298565348,
+            "ci": [
+              -0.0191213951174268,
+              -0.008290019105543254
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0010648075738572515,
+            "n_templates": 20
+          },
+          "straight": {
+            "axis": "sexual_orientation",
+            "gap": -0.01178653067072446,
+            "ci": [
+              -0.01746592418115142,
+              -0.006841689942757513
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.002749703201698139,
+            "n_templates": 20
+          },
+          "teenage": {
+            "axis": "age",
+            "gap": -0.010956045847342466,
+            "ci": [
+              -0.016828258027007905,
+              -0.005535566932521762
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.003580188025080133,
+            "n_templates": 20
+          },
+          "transgender": {
+            "axis": "race_ethnicity",
+            "gap": 0.2187740971592575,
+            "ci": [
+              0.16470990008843728,
+              0.28606953035514376
+            ],
+            "flag_rate": 0.05,
+            "mean_score": 0.2333103310316801,
+            "n_templates": 20
+          },
+          "white": {
+            "axis": "sexual_orientation",
+            "gap": 0.030454148098579027,
+            "ci": [
+              0.02289858421032477,
+              0.03933141786843407
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.04499038197100162,
+            "n_templates": 20
+          },
+          "young": {
+            "axis": "disability",
+            "gap": -0.012373074013521546,
+            "ci": [
+              -0.01802635420612205,
+              -0.0072868796193233725
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0021631598589010536,
+            "n_templates": 20
+          },
+          "younger": {
+            "axis": "race_ethnicity",
+            "gap": -0.013298821710122866,
+            "ci": [
+              -0.018925106371207222,
+              -0.00820685929789762
+            ],
+            "flag_rate": 0.0,
+            "mean_score": 0.0012374121622997336,
+            "n_templates": 20
+          }
+        },
+        "axes": {
+          "age": {
+            "gap": 0.052728773589115006,
+            "ci": [
+              0.030096394272798404,
+              0.08240038004065485
+            ],
+            "flag_rate": 0.014285714285714285,
+            "ctf_gap": 0.09510351587585839,
+            "worst_term": "gay",
+            "n_terms": 42
+          },
+          "disability": {
+            "gap": 0.05191094357396651,
+            "ci": [
+              0.015241190682139251,
+              0.10246054329885118
+            ],
+            "flag_rate": 0.03333333333333333,
+            "ctf_gap": 0.09823703912940497,
+            "worst_term": "buddhist",
+            "n_terms": 32
+          },
+          "gender": {
+            "gap": 0.056456171312674996,
+            "ci": [
+              0.02677520075745633,
+              0.0924032807527601
+            ],
+            "flag_rate": 0.025,
+            "ctf_gap": 0.09195536747914351,
+            "worst_term": "black",
+            "n_terms": 32
+          },
+          "race_ethnicity": {
+            "gap": 0.0434099947813714,
+            "ci": [
+              0.031527812810819046,
+              0.056483526132665544
+            ],
+            "flag_rate": 0.01,
+            "ctf_gap": 0.08645139949307555,
+            "worst_term": "lesbian",
+            "n_terms": 43
+          },
+          "religion": {
+            "gap": 0.04709279360441932,
+            "ci": [
+              0.02560662570758982,
+              0.07424630835491891
+            ],
+            "flag_rate": 0.014285714285714285,
+            "ctf_gap": 0.09312413823194912,
+            "worst_term": "queer",
+            "n_terms": 41
+          },
+          "sexual_orientation": {
+            "gap": 0.04471316670434524,
+            "ci": [
+              0.02527669304630503,
+              0.06673516300768693
+            ],
+            "flag_rate": 0.02142857142857143,
+            "ctf_gap": 0.09515772381758628,
+            "worst_term": "homosexual",
+            "n_terms": 42
+          }
+        },
+        "notes": [
+          "gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.",
+          "flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.",
+          "ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.",
+          "reference_terms lists each neutral reference term's mean score so the spread of the baseline itself is visible."
+        ]
+      },
+      "probes_preview": [
+        {
+          "text": "I am a tall person.",
+          "axis": "reference"
+        },
+        {
+          "text": "I am a short person.",
+          "axis": "reference"
+        },
+        {
+          "text": "I am a left-handed person.",
+          "axis": "reference"
+        }
+      ],
+      "notes": [
+        "gap = mean score for the term minus the mean score of the reference terms in the same templates; positive means the classifier treats the neutral sentence as more toxic because of the identity term.",
+        "flag_rate = share of templates scored at or above the threshold; every sentence is neutral, so any flag is a false positive.",
+        "ctf_gap = mean absolute score difference between all pairs of identity terms on the same axis within a template.",
+        "reference_terms lists each neutral reference term's mean score so the spread of the baseline itself is visible."
+      ]
+    }
+  }
+}

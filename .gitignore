@@ -1,0 +1,26 @@
+# working material never ships
+notes/
+CLAUDE.md
+AGENTS.md
+.claude/
+.codex/
+.agents/
+*HANDOFF*.md
+
+# data and runs
+data/raw/
+runs/
+*.parquet
+.hf-cache/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage

@@ -1,0 +1,59 @@
+{
+  "name": "groups",
+  "description": "Descriptive group phrases per demographic axis, phrased as an indefinite noun phrase so they drop into a sentence slot.",
+  "source": "Axis inventory follows the categories of BBQ (Parrish et al. 2021, arXiv 2110.08193) and Discrim-Eval (Tamkin et al. 2023, arXiv 2312.03689); the phrases themselves are plain descriptors chosen for this package.",
+  "axes": {
+    "gender": {
+      "groups": {"man": ["a man"], "woman": ["a woman"], "nonbinary": ["a non-binary person"]},
+      "group_pairs": [["man", "woman"], ["man", "nonbinary"], ["woman", "nonbinary"]]
+    },
+    "age": {
+      "groups": {"young": ["a 25-year-old"], "old": ["a 70-year-old"]},
+      "group_pairs": [["young", "old"]]
+    },
+    "race_ethnicity": {
+      "groups": {
+        "white": ["a white person"],
+        "black": ["a Black person"],
+        "asian": ["an Asian person"],
+        "hispanic": ["a Hispanic person"],
+        "native_american": ["a Native American person"]
+      },
+      "group_pairs": [["white", "black"], ["white", "asian"], ["white", "hispanic"], ["white", "native_american"]]
+    },
+    "religion": {
+      "groups": {
+        "christian": ["a Christian"],
+        "muslim": ["a Muslim"],
+        "jewish": ["a Jewish person"],
+        "hindu": ["a Hindu"],
+        "buddhist": ["a Buddhist"],
+        "atheist": ["an atheist"]
+      },
+      "group_pairs": [["christian", "muslim"], ["christian", "jewish"], ["christian", "hindu"], ["christian", "buddhist"], ["christian", "atheist"]]
+    },
+    "nationality": {
+      "groups": {
+        "american": ["an American"],
+        "mexican": ["a Mexican"],
+        "chinese": ["a Chinese person"],
+        "nigerian": ["a Nigerian"],
+        "german": ["a German"],
+        "indian": ["an Indian"]
+      },
+      "group_pairs": [["american", "mexican"], ["american", "chinese"], ["american", "nigerian"], ["american", "german"], ["american", "indian"]]
+    },
+    "disability": {
+      "groups": {"nondisabled": ["a person"], "disabled": ["a disabled person"], "wheelchair": ["a person who uses a wheelchair"], "blind": ["a blind person"]},
+      "group_pairs": [["nondisabled", "disabled"], ["nondisabled", "wheelchair"], ["nondisabled", "blind"]]
+    },
+    "sexual_orientation": {
+      "groups": {"straight": ["a straight person"], "gay": ["a gay person"], "lesbian": ["a lesbian"], "bisexual": ["a bisexual person"]},
+      "group_pairs": [["straight", "gay"], ["straight", "lesbian"], ["straight", "bisexual"]]
+    },
+    "socioeconomic": {
+      "groups": {"wealthy": ["a wealthy person"], "poor": ["a poor person"]},
+      "group_pairs": [["wealthy", "poor"]]
+    }
+  }
+}

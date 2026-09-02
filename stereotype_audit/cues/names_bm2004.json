@@ -1,0 +1,20 @@
+{
+  "name": "names_bm2004",
+  "description": "First names used as race-by-gender cues in the Bertrand & Mullainathan (2004) resume audit; nine names per cell.",
+  "source": "Bertrand, M. & Mullainathan, S. (2004). Are Emily and Greg More Employable Than Lakisha and Jamal? American Economic Review 94(4), Table A1.",
+  "url": "https://www.aeaweb.org/articles?id=10.1257/0002828042002561",
+  "axis": "race_gender_names",
+  "groups": {
+    "white_female": ["Allison", "Anne", "Carrie", "Emily", "Jill", "Laurie", "Kristen", "Meredith", "Sarah"],
+    "white_male": ["Brad", "Brendan", "Geoffrey", "Greg", "Brett", "Jay", "Matthew", "Neil", "Todd"],
+    "black_female": ["Aisha", "Ebony", "Keisha", "Kenya", "Latonya", "Lakisha", "Latoya", "Tamika", "Tanisha"],
+    "black_male": ["Darnell", "Hakim", "Jermaine", "Kareem", "Jamal", "Leroy", "Rasheed", "Tremayne", "Tyrone"]
+  },
+  "group_pairs": [
+    ["white_female", "black_female"],
+    ["white_male", "black_male"],
+    ["white_male", "white_female"],
+    ["black_male", "black_female"]
+  ],
+  "notes": "The names signal perceived race and gender to US readers per the original study's pretest; they do not identify anyone's actual race or gender."
+}
